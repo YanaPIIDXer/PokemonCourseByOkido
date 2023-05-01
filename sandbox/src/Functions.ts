@@ -31,16 +31,29 @@ export const translateNameEngToJap = async (engName: string): Promise<string> =>
  * @param name ポケモンの名前（日本語表記）
  */
 export const fetchOkido = async (name: string): Promise<string> => {
+  const description = await fetchConversation("./templates/Description.txt", name);
+  const punchLine = await fetchConversation("./templates/PunchLine.txt", name);
+  const end = await fetchConversation("./templates/End.txt", name);
+  return description + "\n\n" + punchLine + "\n\n\n" + "ではここで一句。\n" + end;
+}
+
+/**
+ * 会話
+ * @param humanPromptTemplatePath HumanMessagePromptTemplateに渡すプロンプト
+ * @param pokemonName ポケモンの名前
+ */
+const fetchConversation = async (humanPromptTemplatePath: string, pokemonName: string): Promise<string> => {
   const llm = new OpenAI({
     modelName: "gpt-3.5-turbo",
+    temperature: 0.5,
   });
 
   const systemTemplate = fs.readFileSync("./templates/System.txt").toString();
-  const descriptionTemplate = fs.readFileSync("./templates/Description.txt").toString();
+  const humanTemplate = fs.readFileSync(humanPromptTemplatePath).toString();
 
   const template = ChatPromptTemplate.fromPromptMessages([
     SystemMessagePromptTemplate.fromTemplate(systemTemplate),
-    HumanMessagePromptTemplate.fromTemplate(descriptionTemplate),
+    HumanMessagePromptTemplate.fromTemplate(humanTemplate),
   ]);
 
   const chain = new ConversationChain({
@@ -48,8 +61,6 @@ export const fetchOkido = async (name: string): Promise<string> => {
     prompt: template,
   });
 
-  const response = await chain.call({ pokemon: name });
-  let result = response.response;
-
-  return result;
+  const response = await chain.call({ pokemon: pokemonName });
+  return response.response;
 }
