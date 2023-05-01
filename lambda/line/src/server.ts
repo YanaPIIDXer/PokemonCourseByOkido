@@ -24,6 +24,9 @@ export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyRe
       }),
     }
   }
+  
+  const body = JSON.parse(event.body);
+  console.log(body);
 
   return {
     statusCode: 200,
