@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 import { PokemonClient } from "pokenode-ts";
-import { translateNameEngToJap } from "./Functions";
+import { translateNameEngToJap, fetchOkido } from "./Functions";
 
 /**
  * 実行
@@ -14,7 +14,8 @@ const exec = async (pokemonId: number): Promise<void> => {
     const pokemon = await client.getPokemonById(pokemonId);
 
     const japName = await translateNameEngToJap(pokemon.name);
-    console.log(japName);
+    const result = await fetchOkido(japName);
+    console.log(result);
   } catch (error: any) {
     console.error(error.message ?? error);
   }
