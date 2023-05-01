@@ -1,0 +1,23 @@
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "ts-node ./src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "axios-cache-interceptor": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "langchain": "^0.0.67",
+    "openai": "^3.2.1",
+    "pokenode-ts": "^1.18.3"
+  }
+}
