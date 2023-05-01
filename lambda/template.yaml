@@ -18,6 +18,7 @@ Resources:
       Environment:
         Variables:
           OPEN_AI_TOKEN: Dummy
+          EXEC_LOCAL: false
     Metadata:
       BuildMethod: esbuild
       BuildProperties:
