@@ -17,7 +17,7 @@ Resources:
             Method: POST
       Environment:
         Variables:
-          OPENAI_API_TOKEN: Dummy
+          OPENAI_API_KEY: Dummy
           EXEC_LOCAL: "false"
     Metadata:
       BuildMethod: esbuild

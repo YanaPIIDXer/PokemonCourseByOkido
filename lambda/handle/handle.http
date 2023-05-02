@@ -8,7 +8,7 @@ POST http://localhost:3000/hooks
       "message": {
         "type": "text",
         "id": "14353798921116",
-        "text": "5sam "
+        "text": "5"
       },
       "timestamp": 1625665242211,
       "source": {
