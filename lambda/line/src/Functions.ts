@@ -14,6 +14,7 @@ import { template as endTemplate } from "./templates/End";
 export const translateNameEngToJap = async (engName: string): Promise<string> => {
   const llm = new OpenAI({
     modelName: "gpt-3.5-turbo",
+    openAIApiKey: process.env.OPENAI_API_KEY,
   });
   
   const template = new PromptTemplate({
@@ -49,6 +50,7 @@ const fetchConversation = async (humanTemplate: string, pokemonName: string): Pr
   const llm = new OpenAI({
     modelName: "gpt-3.5-turbo",
     temperature: 0.5,
+    openAIApiKey: process.env.OPENAI_API_KEY,
   });
 
   const template = ChatPromptTemplate.fromPromptMessages([
