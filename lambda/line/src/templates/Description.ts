@@ -1,5 +1,4 @@
-export const template = `
-{pokemon}について説明してください。
+export const template = `{pokemon}について説明してください。
 但し、下記の制約に厳格に従ってください。
 
 # 制約

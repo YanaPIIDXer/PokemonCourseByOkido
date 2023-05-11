@@ -1,5 +1,4 @@
-export const template = `
-{pokemon}に関する俳句を作ってください
+export const template = `{pokemon}に関する俳句を作ってください
 俳句の後は、「みんなもポケモン、ゲットじゃぞ～！」で締めてください。
 
 オーキド博士:`;
